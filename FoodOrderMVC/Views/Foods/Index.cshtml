@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CallingAPIInClient.Models.Food>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddFood">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            var photoPath = "~/Image/" + (item.Image);
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                <img src="@photoPath" alt="no data" height="100" width="100" asp-append-version="true"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  FoodId=item.FoodId  } ) |
+                @*<a asp-action="Edit" asp-route-FoodId="@item.FoodId" class="btn-group btn-primary">Edit</a>*@
+                @Html.ActionLink("Details", "Details", new { FoodId=item.FoodId }) |
+                @Html.ActionLink("Delete", "Delete", new { FoodId=item.FoodId })
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

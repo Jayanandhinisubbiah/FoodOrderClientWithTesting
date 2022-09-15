@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CallingAPIInClient.Models.Cart>
+
+
+@{
+    ViewData["Title"] = "ViewCart";
+     Layout = "_LayoutUser";
+
+}
+
+<h1>View Cart Items</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>*@
+            
+            <th>
+                @*@Html.DisplayNameFor(model => model.FoodId)*@Food Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qnt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>*@
+             @*<td>
+                @Html.DisplayFor(modelItem => item.User.FName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qnt)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-CartId="@item.CartId">Delete</a>
+                <a asp-action="Edit" asp-controller="Carts"  asp-route-CartId="@item.CartId">Edit</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form asp-action="ViewCart">
+       <input type="submit" value="Order" asp-action="ViewCart" class="btn btn-success"  />
+        <a asp-action="GetAllFoods" asp-controller="Foods">Back to List</a>
+    </form>
+   
+   
+        

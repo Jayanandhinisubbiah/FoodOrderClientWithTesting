@@ -1,0 +1,95 @@
+﻿
+
+@model IEnumerable<CallingAPIInClient.Models.Food>
+
+@{
+    ViewData["Title"] = "GetAllFoods";
+    Layout = "_LayoutUser";
+    int Sno = 0;
+}
+
+<form asp-controller="Foods" asp-action="GetAllFoods">
+    <div class="input-group">
+        <input class="form-control" name="SearchText" />
+        <div class="input-group-append">
+<button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+<div class="w3-teal">
+  <h1>GetAllFoods</h1>
+
+@*<p>
+    <a asp-action="AddFood">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                S.No
+                @*@Html.DisplayNameFor(model => model.FoodId)*@
+            </th>
+            <th>
+                Category Name
+                @*@Html.DisplayNameFor(model => model.CategoryName)*@
+            </th>
+            <th>
+                Food Name
+                @*@Html.DisplayNameFor(model => model.FoodName)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+                var photoPath = "~/Image/" + (item.Image);
+  Sno=Sno+1;
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.FoodId)*@
+              @Sno
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                <img src="@photoPath" alt="no data" height="100" width="100" asp-append-version="true"/>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                <a asp-action="AddtoCart" asp-controller="Carts" asp-route-FoodId="@item.FoodId">Add to Cart</a>|
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
+
+
+
+
+
+     
+

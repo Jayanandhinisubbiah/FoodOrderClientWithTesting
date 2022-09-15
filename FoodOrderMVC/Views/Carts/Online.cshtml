@@ -1,0 +1,47 @@
+﻿@model CallingAPIInClient.Models.OrderMaster
+
+@{
+    ViewData["Title"] = "Online";
+Layout = "_LayoutUser";
+}
+
+<h1>Online Payment</h1>
+
+@*<h4>OrderMaster</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Online" asp-for="OrderId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           <input type="hidden" asp-for="OrderId" />
+            
+            
+            <div class="form-group">
+                <label asp-for="BankName" class="control-label"></label>
+                <select asp-for="BankName" class="form-control" >  
+    <option >SBI</option>  
+    <option >Kotak Mahindra</option>  
+    <option >CUB</option> 
+     <option >State Bank</option>
+</select>
+                <span asp-validation-for="BankName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardNo" class="control-label"></label>
+                <input type="number" asp-for="CardNo" class="form-control" />
+                <span asp-validation-for="CardNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CCV" class="control-label"></label>
+                <input  asp-for="CCV" class="form-control" />
+                <span asp-validation-for="CCV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

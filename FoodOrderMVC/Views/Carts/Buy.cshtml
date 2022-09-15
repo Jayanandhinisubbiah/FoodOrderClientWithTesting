@@ -1,0 +1,40 @@
+﻿@model CallingAPIInClient.Models.OrderMaster
+
+@{
+    ViewData["Title"] = "Buy";
+Layout = "_LayoutUser";
+ 
+}
+
+<h1>Payment</h1>
+
+@*<h4>OrderMaster</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Buy" asp-for="OrderId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OrderId" />
+            @*<div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div>
+               @Html.RadioButtonFor(model => model.Type,"Online", new { onchange = "this.form.submit();" })Online
+  @Html.RadioButtonFor(model => model.Type,"Offline", new { onchange = "this.form.submit();" })Offline
+
+            </div>
+          
+        </form >
+
+    </div>
+</div>
+
+
+

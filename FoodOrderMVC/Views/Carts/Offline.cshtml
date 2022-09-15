@@ -1,0 +1,31 @@
+﻿@model CallingAPIInClient.Models.OrderMaster
+
+@{
+    ViewData["Title"] = "Offline";
+Layout = "_LayoutUser";
+}
+
+<h1>Offline Payment</h1>
+
+<h4>Cash On Delivery</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Offline" asp-for="OrderId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           <input type="hidden" asp-for="OrderId" />
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Pay Now" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

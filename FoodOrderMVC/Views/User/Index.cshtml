@@ -1,0 +1,91 @@
+﻿@model IEnumerable<CallingAPIInClient.Models.UserList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>User List</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Pincode)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Pincode)
+            </td>*@
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>*@
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.UserId">Details</a> |*@
+                @*<a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>|*@
+                <a asp-action="ViewReport"  asp-route-UserId="@item.UserId">View Order Report</a>|
+                @*<a asp-action="ViewPayReport"  asp-route-UserId="@item.UserId">View Payment Report</a>*@
+
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,67 @@
+﻿@model CallingAPIInClient.ViewModels.FoodEditViewModel
+
+@{
+    ViewData["Title"] = "EditFood";
+    var PhotoPath = "~/Image/" + (Model.ExistingPhotoPath);
+}
+
+<h1>EditFood</h1>
+
+<h4>Food</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden asp-for="FoodId"/>
+                        <input hidden asp-for="ExistingPhotoPath"/>
+
+           @* <div class="form-group">
+                <label asp-for="FoodId" class="control-label"></label>
+                <input asp-for="FoodId" class="form-control" />
+                <span asp-validation-for="FoodId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodName" class="control-label"></label>
+                <input asp-for="FoodName" class="form-control" />
+                <span asp-validation-for="FoodName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Detail" class="control-label"></label>
+                <input asp-for="Detail" class="form-control" />
+                <span asp-validation-for="Detail" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="ImageView" class="custom-file-label">Click here to Change Photo</label>
+                <input asp-for="ImageView"  class="form-control custom-file-input"/>
+            </div>
+             <div class="form-group">
+                 <img src="@PhotoPath" class="imageThumbnail" asp-append-version="true"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+
+            </div>
+              
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
